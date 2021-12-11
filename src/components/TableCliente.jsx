@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 
 const TableCliente = () => {
-    const baseURL="http://132.226.214.88:8080/cliente/"
+    const baseURL="https://jsonplaceholder.typicode.com/users";
     const [data , setData] = useState([])
 
     const peticionGet = async () => {
@@ -188,8 +188,7 @@ const TableCliente = () => {
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Telefono</th>
-      <th scope="col">Puntos</th>
-      <th scope="col">Fecha</th>
+      
       <th scope="col">Departamento</th>
       <th scope="col">Ciudad</th>
       <th scope="col">Acciones</th>
@@ -200,13 +199,12 @@ const TableCliente = () => {
         data.map((cliente) =>(
         <tr key={cliente.id}>
             <td>{cliente.id}</td>
-            <td>{cliente.nombre}</td>
-            <td>{cliente.apellido}</td>
-            <td>{cliente.telefono}</td>
-            <td>{cliente.puntos}</td> 
-            <td>{cliente.fRegistro}</td>
-            <td>{cliente.address !==null ? cliente.address.departamento : "sin definir" }</td>
-            <td>{cliente.address !==null ? cliente.address.ciudad : "sin definir" }</td>
+            <td>{cliente.name}</td>
+            <td>{cliente.username}</td>
+            <td>{cliente.email}</td>
+            
+            <td>{cliente.address !==null ? cliente.address.street : "sin definir" }</td>
+            <td>{cliente.address !==null ? cliente.address.city : "sin definir" }</td>
             <td><button className="btn btn-primary" onClick={()=>seleccionarCliente(cliente)} >Editar</button> {"   "} 
               <button className="btn btn-danger"onClick={()=>seleccionarClienteDelete(cliente)}>Eliminar</button></td>       
         </tr>
